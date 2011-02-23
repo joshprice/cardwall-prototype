@@ -12,9 +12,8 @@
       '<form class="card" id="card_1">' +
         '<h1>' + that.title + '</h1>' +
         '<p>' + that.body + '</p>' +
-      '</form>');
+      '</form>').draggable();
     }
     $('#wall').append(that.body);
   };
-  
 })();
