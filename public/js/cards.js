@@ -10,10 +10,10 @@
     
     function makeBody() {
       that.body = $('' +
-        '<form class="card" id="card_' + (card_count += 1) + '">' +
-        '<h1>' + that.title + '</h1>' +
-        '<p>' + that.body + '</p>' +
-      '</form>').draggable();
+        '<div class="card" id="card_' + (card_count += 1) + '">' +
+          '<h1 contenteditable>' + that.title + '</h1>' +
+          '<p contenteditable>' + that.body + '</p>' +
+        '</div>').draggable();
     }
     $('#wall').append(that.body);
   };
