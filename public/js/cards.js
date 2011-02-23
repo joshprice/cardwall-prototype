@@ -10,10 +10,16 @@
     
     function makeBody() {
       that.body = $('' +
-        '<div class="card" id="card_' + (card_count += 1) + '">' +
+        '<div class="card" id="card_' + card_count + '">' +
           '<h1 contenteditable>' + that.title + '</h1>' +
           '<p contenteditable>' + that.body + '</p>' +
-        '</div>').draggable();
+        '</div>').draggable({
+          stop: function(event, ui) {
+            this.x = ui.position.left;
+            this.y = ui.position.top;
+          }
+        });
+      card_count++;
     }
     $('#wall').append(that.body);
   };
