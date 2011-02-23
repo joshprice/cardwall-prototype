@@ -8,7 +8,12 @@
     initialize: function() {
       if (!this.get('title')) this.set({ 'title': this.defaults.title });
       if (!this.get('body')) this.set({ 'title': this.defaults.body });      
-    }    
+    },
+    
+    clear: function() {
+      this.destroy();
+      this.view.remove();
+    }
   });
   
   CardCollection = Backbone.Collection.extend({
@@ -29,7 +34,11 @@
     
     render : function() {
       $(this.el).html(this.template(this.model.toJSON()));
-      $(this.el).addClass('card').draggable().appendTo('body');
+      $(this.el).addClass('card').draggable().appendTo('#wall');
+    },
+    
+    clear: function() {
+      this.model.clear();
     }
   });
   
