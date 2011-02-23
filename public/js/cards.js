@@ -9,7 +9,7 @@
     
     initialize: function() {
       if (!this.get('title')) this.set({ 'title': this.defaults.title });
-      if (!this.get('body')) this.set({ 'title': this.defaults.body });      
+      if (!this.get('body')) this.set({ 'title': this.defaults.body });
     },
     
     clear: function() {
@@ -19,7 +19,7 @@
   });
   
   CardView = Backbone.View.extend({
-    tagName   : 'div',
+    tagName   : 'article',
     template  : _.template($('#card-template').html()),
     
     initialize: function() {
@@ -29,15 +29,21 @@
     
     render : function() {
       var model = this.model;
-      $(this.el).html(this.template(this.model.toJSON()));
-      $(this.el)
-        .addClass('card')
+      var cardView = $(this.el);
+      cardView.html(this.template(this.model.toJSON()));
+      cardView.addClass('card')
+        .appendTo('#wall')
         .draggable({
           stop: function(event, ui) {
-            model.save({x: ui.position.left, y: ui.position.top})
+            model.save({ x: ui.position.left, y: ui.position.top })
           }
         })
-        .appendTo('#wall')
+        .keypress(function() {
+          model.save({
+            title: cardView.find(".title").html(),
+            body: cardView.find(".body").html()
+          });
+        })
         .css({
           position: "absolute",
           left: model.get("x"),

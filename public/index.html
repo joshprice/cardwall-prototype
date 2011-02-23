@@ -10,8 +10,10 @@
     <div id="wall">
     </div>
     <script type="text/template" id="card-template">
-      <h1 contenteditable><%= title %></h1>
-      <p contenteditable><%= body %></p>
+      <h1 class="title" contenteditable><%= title %></h1>
+      <section class="body" contenteditable>
+        <%= body %>
+      </section>
     </script>
     <script src="/js/jquery-1.4.4.min.js"></script>
     <script src="/js/jquery-ui-1.8.9.custom.min.js"></script>
