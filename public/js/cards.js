@@ -1,9 +1,10 @@
 (function() {
   Card = function(properties) {
     var that = this;
-    this.title      = properties.title || '';
-    this.body       = properties.body || '';
-    this.dimensions = properties.dimensions || '';
+    this.title = properties.title || '';
+    this.body  = properties.body || '';
+    this.x     = properties.x || 0;
+    this.y     = properties.y || 0;
     
     makeBody();
     
