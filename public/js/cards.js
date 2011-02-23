@@ -21,3 +21,7 @@
 
 var card_count = 0;
 new Card({title: 'blah', body: 'blah'})
+
+$(document).bind('keydown', 'n', function(){
+  new Card({title: 'New', body: 'Wooo'})
+});
