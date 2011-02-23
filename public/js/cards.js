@@ -4,11 +4,10 @@
     this.body       = properties.body || '';
     this.dimensions = properties.dimensions || '';
     
+    makeBody();
     
     function makeBody() {
-      this.body = $('
-        <div class="card"></div>
-      ');
+      this.body = $('<div class="card"></div>');
     }
   };
   
