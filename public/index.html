@@ -19,9 +19,16 @@
         </fieldset>
       </form>
     </div>
-    <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.9.custom.min.js"></script>
-    <script type="text/javascript" src="js/cards.js"></script>
-    <script type="text/javascript" src="js/cardwall.js"></script>
+    <script type="text/template" id="card-template">
+      <h1><%= title %></h1>
+      <p><%= body %></p>
+    </script>
+    <script src="/js/jquery-1.4.4.min.js"></script>
+    <script src="/js/jquery-ui-1.8.9.custom.min.js"></script>
+    <script src="/js/underscore-min.js"></script>    
+    <script src="/js/backbone.js"></script>
+    <script src="/js/backbone-localstorage.js"></script>
+    <script src="/js/cards.js"></script>
+    <script src="/js/cardwall.js"></script>
   </body>
 </html>
