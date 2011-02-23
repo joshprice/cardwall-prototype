@@ -1,6 +1,6 @@
 body  { font-family: Arial, sans-serif; font-size: 12px; }
 
-.wall { margin: 50px; border: 1px solid #999; min-height:500px;}
+#wall { margin: 50px; border: 1px solid #eee; min-height:500px;}
 
 .card { background-color:#0A152B; color:#D1F62C; border: 1px solid #999; width:200px; margin:5px; padding:0 10px; -moz-box-shadow:3px 3px 3px #999;-webkit-box-shadow:3px 3px 3px #999;}
 .card h1 { color:#FA571F; font-weight: bold; font-size: 14px; margin-bottom:5px;}
