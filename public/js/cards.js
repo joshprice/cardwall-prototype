@@ -29,7 +29,7 @@
     
     render : function() {
       $(this.el).html(this.template(this.model.toJSON()));
-      $(this.el).addClass('card').appendTo('body');
+      $(this.el).addClass('card').draggable().appendTo('body');
     }
   });
   
