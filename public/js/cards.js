@@ -1,8 +1,10 @@
 (function() {  
   Card = Backbone.Model.extend({
     defaults: {
-      title :   'title...',
-      body  :   'body...'
+      title : 'title...',
+      body  : 'body...',
+      x     : 0,
+      y     : 0
     },
     
     initialize: function() {
@@ -16,13 +18,6 @@
     }
   });
   
-  CardCollection = Backbone.Collection.extend({
-    model: Card,
-    localStorage: new Store('cards')
-  });
-  
-  Cards = new CardCollection;
-  
   CardView = Backbone.View.extend({
     tagName   : 'div',
     template  : _.template($('#card-template').html()),
@@ -33,14 +28,34 @@
     },
     
     render : function() {
+      var model = this.model;
       $(this.el).html(this.template(this.model.toJSON()));
-      $(this.el).addClass('card').draggable().appendTo('#wall');
+      $(this.el)
+        .addClass('card')
+        .draggable({
+          stop: function(event, ui) {
+            model.save({x: ui.position.left, y: ui.position.top})
+          }
+        })
+        .appendTo('#wall')
+        .css({
+          position: "absolute",
+          left: model.get("x"),
+          top: model.get("y")
+        });
     },
     
     clear: function() {
       this.model.clear();
     }
   });
+  
+  CardCollection = Backbone.Collection.extend({
+    model: Card,
+    localStorage: new Store('cards')
+  });
+  
+  Cards = new CardCollection;
   
   AppView = Backbone.View.extend({
     el  : $('#wall'),
@@ -62,5 +77,5 @@
     }
   });
   
-  Application = new AppView;  
+  Application = new AppView;
 })();
